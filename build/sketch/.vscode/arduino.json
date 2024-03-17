@@ -1,7 +1,0 @@
-#line 1 "/Users/vincentliu/phys-project/Main/.vscode/arduino.json"
-{
-    "sketch": "Main.ino",
-    "board": "arduino:avr:uno",
-    "output": "build",
-    "port": "/dev/tty.usbmodem11101"
-}
