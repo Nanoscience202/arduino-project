@@ -1,0 +1,10 @@
+{
+  "additionalFiles": "../../..,../../..,../../../..,../../../../..,../../../../..,../../../../..,../../../../..,../../../../..,../../../../..,../../../../..,../../../../..,../../../../..,../../../../..,../../../../..,../../../../..,../../../../..,../../../../..,../../../../..,../../../../../..,../../../../../..,../../../..,../../../..,../../../..,../../../..,../../../..,../../../..,../../../..,../../../..,../../../..",
+  "builtInToolsFolders": "",
+  "compiler.optimization_flags": "",
+  "customBuildProperties": "build.warn_data_percentage=75",
+  "fqbn": "arduino:avr:uno",
+  "hardwareFolders": "/Users/vincentliu/Library/Arduino15/packages",
+  "otherLibrariesFolders": "/Users/vincentliu/phys-project/Main/libraries",
+  "sketchLocation": "/Users/vincentliu/phys-project/Main"
+}
