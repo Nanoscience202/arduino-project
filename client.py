@@ -1,12 +1,19 @@
 import serial
+import ollama
 
 arduino = serial.Serial(port="/dev/cu.usbmodem11101", baudrate=9600, timeout=0)
+
+
+def multiply(req: str) -> str:
+    res = float(req) * 2 * 10
+    return str(res)
+
 
 print("ready")
 while True:
     inByte = b""
 
-    # wait until non empty byte is read
+    # wait until first non empty byte is read
     while inByte == b"":
         inByte = arduino.read()
 
@@ -19,12 +26,16 @@ while True:
     print("req: " + req)
 
     # transform request and return response
-    res = str(float(req) * 2 * 10)
+    stream = ollama.generate("mistral", req, stream=True)
 
-    print("res: " + res + "\n")
+    for chunk in stream:
+        res = ""
+        if isinstance(chunk, str):
+            res = chunk.replace("\n", " ")
+        else:
+            res = chunk["response"].replace("\n", " ")
 
-    # send the response to arduino
-    arduino.write(bytes(res, "utf-8"))
+        arduino.write(bytes(res, "utf-8"))
+        arduino.flush()
 
-    # wait until all bytes are written
-    arduino.flush()
+    arduino.write(b"\n")

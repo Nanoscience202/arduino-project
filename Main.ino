@@ -23,6 +23,9 @@ void loop() {
   while (digitalRead(BUTTON) == HIGH) {
     digitalWrite(CHECK, HIGH);
     counter += 0.01;
+    // microphone listen for words
+    // use library to convert audio to text
+    // store text in a string
   }
   digitalWrite(CHECK, LOW);
 
@@ -32,10 +35,23 @@ void loop() {
   Serial.flush();
 
   // read python response
-  String res = Serial.readStringUntil('\n');
+  String word;
 
-  // do stuff based on the response
-  digitalWrite(LED, HIGH);
-  delay(res.toInt());
-  digitalWrite(LED, LOW);
+  while (1) {
+    // read word
+    char inByte = Serial.read();
+
+    // if end of response, quit
+    if (inByte = '\n') {
+      break;
+    }
+
+    // check if it's the end of a word
+    if (inByte = ' ') {
+      // speaker speak the word
+      word = "";
+    } else {
+      word.concat(inByte);
+    }
+  }
 }
